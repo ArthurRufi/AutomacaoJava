@@ -1,6 +1,7 @@
 package org.example.service;
 
 import java.io.File;
+import java.util.Optional;
 
 public class FindRouterDict {
     private String rout;
@@ -9,8 +10,8 @@ public class FindRouterDict {
         this.rout = rout;
     }
 
-    public boolean find() {
+    public Optional<String> findAndReturn() {
         File dir = new File(rout);
-        return dir.exists() && dir.isDirectory();
+        return (dir.exists() && dir.isDirectory()) ? Optional.of(rout) : Optional.empty();
     }
 }
